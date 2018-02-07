@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import com.wuzp.didi.di_tech_sd.R;
@@ -25,6 +26,8 @@ public class RxActivity extends AppCompatActivity {
 
     private ViewDataBinding binding;
 
+    Disposable disposable;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,12 @@ public class RxActivity extends AppCompatActivity {
     }
 
     private void initView() {
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        testRxjava();
     }
 
     private void testRxjava() {
@@ -49,26 +57,37 @@ public class RxActivity extends AppCompatActivity {
         Observer<String> observer = new Observer<String>() {
             @Override
             public void onSubscribe(Disposable d) {
-
+                disposable = d;
             }
 
             @Override
             public void onNext(String value) {
-
+                show(value);
             }
 
             @Override
             public void onError(Throwable e) {
-
+                show("error:" + e.getMessage());
             }
 
             @Override
             public void onComplete() {
-
+                show("compelele");
             }
         };
 
         //绑定有很多方式
         observable.subscribe(observer);
+    }
+
+    private void show(String msg) {
+        Log.e("wzp", "msg:" + msg);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        disposable.dispose();
     }
 }
