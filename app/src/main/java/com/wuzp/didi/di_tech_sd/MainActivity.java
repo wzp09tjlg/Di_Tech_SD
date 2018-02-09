@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         goActivity();
     }
 
-    private void goActivity() {
+    
+   private void goActivity() {
         startActivity(new Intent(this, RxActivity.class));
     }
 }
