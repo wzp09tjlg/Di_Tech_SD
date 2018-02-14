@@ -1,14 +1,16 @@
 package com.wuzp.didi.di_tech_sd.rx;
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Toast;
 
 import com.wuzp.didi.di_tech_sd.R;
+import com.wuzp.didi.di_tech_sd.databinding.ActivityRxBinding;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -24,7 +26,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class RxActivity extends AppCompatActivity {
 
-    private ViewDataBinding binding;
+    private ActivityRxBinding binding;
 
     Disposable disposable;
 
@@ -37,6 +39,12 @@ public class RxActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        binding.btnTest1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(RxActivity.this, "hello rxjava", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
