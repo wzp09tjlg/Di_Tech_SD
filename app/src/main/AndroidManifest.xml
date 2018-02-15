@@ -21,6 +21,11 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity
+            android:name=".databinding.ActivityBinding"
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>
