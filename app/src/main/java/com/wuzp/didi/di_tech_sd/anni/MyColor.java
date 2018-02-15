@@ -3,7 +3,6 @@ package com.wuzp.didi.di_tech_sd.anni;
 import android.support.annotation.IntDef;
 
 /**
- * @author wuzhenpeng03 (wuzhenpeng03@didichuxing.com)
  */
 public class MyColor {
 
